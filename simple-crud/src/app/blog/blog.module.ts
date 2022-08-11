@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { BlogRoutingModule } from './blog-routing.module';
 import { BlogListComponent } from './pages/blog-list/blog-list.component';
 import { BlogItemComponent } from './components/blog-item/blog-item.component';
 
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -11,7 +17,13 @@ import { BlogItemComponent } from './components/blog-item/blog-item.component';
     BlogItemComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BlogRoutingModule,
+    MatCardModule,
+    MatDividerModule,
+    MatGridListModule,
+    MatButtonModule
+    
   ]
 })
 export class BlogModule { }

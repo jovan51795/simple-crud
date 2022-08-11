@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Blog } from '../../models/blog';
 
 @Component({
   selector: 'app-blog-item',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogItemComponent implements OnInit {
 
+  @Input() blogItem: Blog | undefined
+  @Output() actionEmetter = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  cardAction = (actionType: string, id: any) => {
+    this.actionEmetter.emit({type: actionType, id})
+  }
 }
