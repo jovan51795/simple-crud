@@ -9,12 +9,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
+// import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
     BlogListComponent,
-    BlogItemComponent
+    BlogItemComponent,
   ],
   imports: [
     CommonModule,
@@ -22,8 +23,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatDividerModule,
     MatGridListModule,
-    MatButtonModule
-    
+    MatButtonModule,
+    // SharedModule
   ]
 })
 export class BlogModule { }

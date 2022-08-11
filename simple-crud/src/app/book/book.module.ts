@@ -8,13 +8,19 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
+// import { SharedModule } from '../shared/shared.module';
+import { BookFormComponent } from './pages/book-form/book-form.component';
+import { ReactiveFormsModule, FormsModule, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     BookListComponent,
-    BookItemComponent
+    BookItemComponent,
+    BookFormComponent,
+
   ],
   imports: [
     CommonModule,
@@ -22,7 +28,13 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatDividerModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
+    // SharedModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    FormBuilder
   ]
 })
 export class BookModule { }

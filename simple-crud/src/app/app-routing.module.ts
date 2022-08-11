@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookFormComponent } from './book/pages/book-form/book-form.component';
 
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "profile",
+    redirectTo: "blog",
     pathMatch: "full"
   },
   {
@@ -18,7 +19,9 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: () => import('./user/user.module').then(u => u.UserModule)
-  }
+  },
+ 
+  
 ];
 
 @NgModule({

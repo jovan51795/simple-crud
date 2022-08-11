@@ -10,8 +10,8 @@ import { BlogServiceService } from '../../services/blog-service.service';
 export class BlogListComponent implements OnInit {
 
   blogs: Blog[] = []
-  constructor() { 
-    this.blogs = new BlogServiceService().getBlog();
+  constructor( private blogService: BlogServiceService) { 
+    this.blogs = blogService.getBlog();
     console.log(this.blogs)
   }
 
