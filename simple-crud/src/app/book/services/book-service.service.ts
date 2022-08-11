@@ -42,6 +42,15 @@ export class BookServiceService {
       ],
       isbn: 1234567810
     },
+    // {
+    //   id: 4,
+    //   name: "React tutorials",
+    //   authors: [
+    //     "jovanie",
+    //     "cabatuan"
+    //   ],
+    //   isbn: 1234567810
+    // },
    
   ];
 

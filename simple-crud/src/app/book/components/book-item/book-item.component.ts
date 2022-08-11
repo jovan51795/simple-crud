@@ -16,6 +16,14 @@ export class BookItemComponent implements OnInit {
   }
 
   cardAction = (actionType: string, id: any) => {
-    this.actionEmetter.emit({type: actionType, id})
+    if(actionType === 'delete') {
+      this.actionEmetter.emit( id)
+    }else {
+      this.editBook(id);
+    }
+  }
+
+  editBook = (id: number) => {
+    console.log(id)
   }
 }

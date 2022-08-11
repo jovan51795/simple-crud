@@ -1,0 +1,20 @@
+<form [formGroup]="bookFormGroup">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name">
+    </div>
+    <div class="form-group">
+        <label for="isbn">Isbn</label>
+        <input type="text" formControlName="isbn">
+    </div>
+    <ng-container formArrayName="authors">
+        <label for="authors">Authors</label>
+        <div class="input-group" *ngFor="let author of authorsFormArray.controls; index as i">
+            <input type="text" [formControlName]="i">
+            <button (click)="deleteAuthor(i)">Delete Author</button>
+        </div>
+        <button (click)="addAuthor()">
+            Add Author
+        </button>
+    </ng-container>
+</form>

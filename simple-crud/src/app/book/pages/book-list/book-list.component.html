@@ -1,9 +1,8 @@
-
+<button (click)="sample()">sample</button>
 <section>
     <mat-card *ngFor="let book of books" class="example-card">
         <app-book-item [bookItem]="book" class="app-book" (actionEmetter)="action($event)"></app-book-item>
     </mat-card>
 </section>
-
 
   
