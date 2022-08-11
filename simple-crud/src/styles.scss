@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.example-card {
+    max-width: 50%;
+    margin: 2rem;
+    margin-bottom: 8px;
+}
+section {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    justify-content: center;
+
+    .app-book {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+}
+
+
+mat-card-title-group {
+    width: 300px !important;
+
+    .author-container {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.card-footer {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between !important;
+    display: block;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgba(0,0,0,.12);
+    padding: 10px 0px;
+}
+.title-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .title {
+        text-transform: uppercase;
+    }
+}
+
