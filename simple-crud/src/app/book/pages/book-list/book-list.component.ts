@@ -19,11 +19,16 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
   }
   action(id: number){
-    this.books = this.books.filter((x)=> x.id !== id)
-    console.log(this.books)
+    this.bookService.delete(id)
+    this.books = this.bookService.getBooks();
   }
   sample(){
     this.router.navigate(['/form', 2])
+  }
+
+  deleteAll = () => {
+    this.bookService.deleteAll();
+    this.books = this.bookService.getBooks();
   }
 
 }

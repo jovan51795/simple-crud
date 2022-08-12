@@ -1,19 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-command-bar',
   templateUrl: './command-bar.component.html',
   styleUrls: ['./command-bar.component.scss']
 })
-export class CommandBarComponent implements OnInit {
-  constructor(private router: Router ) { 
+export class CommandBarComponent implements OnInit{
+  routeSample =""
+  name = 'Get Current Url Route Demo';
+  @Output () deleteAllEmitter = new EventEmitter()
+  constructor(private router: Router) { 
   }
+
 
   ngOnInit(): void {
+   
   }
 
-  sample () {
-    this.router.navigate
+  sample = () =>{
+    var s: string[] =  this.router.url.split('/')
+    return s[1];
+  }
+
+  deleteAll = () => {
+    this.deleteAllEmitter.emit();
   }
 }

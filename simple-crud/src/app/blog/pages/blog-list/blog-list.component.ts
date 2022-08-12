@@ -12,12 +12,17 @@ export class BlogListComponent implements OnInit {
   blogs: Blog[] = []
   constructor( private blogService: BlogServiceService) { 
     this.blogs = blogService.getBlog();
-    console.log(this.blogs)
   }
 
   ngOnInit(): void {
   }
-  action(data: object){
-    console.log(data)
+  action(id: number){
+    this.blogService.delete(id)
+    this.blogs = this.blogService.getBlog();
+  }
+
+  deleteAllBlog = () => {
+    this.blogService.deleteAll()
+    this.blogs = this.blogService.getBlog();
   }
 }

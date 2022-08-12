@@ -34,4 +34,24 @@ export class BlogServiceService {
   getBlog = () => {
     return this.blog;
   }
+
+  setBook = (bookData: Blog) => {
+    this.blog.push(bookData)
+  }
+
+  editBook = (blogData: Blog) => {
+   for(let x in this.blog) {
+    if(this.blog[x].id === blogData.id){
+      this.blog[x] = blogData
+    }
+   }
+  }
+
+  delete(id: number){
+    this.blog = this.blog.filter((x)=> x.id !== id)
+  }
+  deleteAll = () => {
+    this.blog = [];
+    console.log(this.blog)
+  }
 }
