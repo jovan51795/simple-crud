@@ -57,6 +57,25 @@ export class BookServiceService {
   getBooks = () => {
     return this.book;
   }
+  setBook = (bookData: Book) => {
+    this.book.push(bookData)
+  }
+
+  editBook = (bookData: Book) => {
+   for(let x in this.book) {
+    if(this.book[x].id === bookData.id){
+      this.book[x] = bookData
+    }
+   }
+  }
+
+  delete(id: number){
+    this.book = this.book.filter((x)=> x.id !== id)
+  }
+  deleteAll = () => {
+    this.book = [];
+  }
+
     
     
 }

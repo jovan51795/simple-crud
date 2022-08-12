@@ -27,6 +27,6 @@
     
 </div>
 <div class="card-footer">
-    <button mat-raised-button color="primary" (click)="cardAction('edit', blogItem?.id)">EDIT</button>
-    <button mat-raised-button color="warn" (click)="cardAction('delete', blogItem?.id)">DELETE</button>
+    <button mat-raised-button color="primary" [routerLink]="['form', blogItem?.id]">EDIT</button>
+    <button mat-raised-button color="warn" (click)="cardAction(blogItem?.id)">DELETE</button>
 </div>

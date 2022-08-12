@@ -12,6 +12,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { BookFormComponent } from './pages/book-form/book-form.component';
 import { ReactiveFormsModule, FormsModule, FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { SharedModule } from './../shared.module'
 
 
 
@@ -29,7 +30,7 @@ import { FormBuilder } from '@angular/forms';
     MatDividerModule,
     MatGridListModule,
     MatButtonModule,
-    // SharedModule,
+    SharedModule,
     FormsModule,
     ReactiveFormsModule
   ],

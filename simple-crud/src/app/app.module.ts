@@ -9,7 +9,7 @@ import { MatCardModule} from '@angular/material/card'
 import { HeaderComponent } from './shared/components/header/header.component';
 import { MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule} from '@angular/material/toolbar';
-import { CommandBarComponent } from './shared/components/command-bar/command-bar.component';
+// import { CommandBarComponent } from './shared/components/command-bar/command-bar.component';
 
 // import {MatButtonModule} from '@angular/material/button';
 
@@ -18,7 +18,7 @@ import { CommandBarComponent } from './shared/components/command-bar/command-bar
   declarations: [
     AppComponent,
     HeaderComponent,
-    CommandBarComponent,
+    // CommandBarComponent,
   ],
   imports: [
     BrowserModule,

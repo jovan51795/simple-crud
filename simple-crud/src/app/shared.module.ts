@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { CommandBarComponent } from './components/command-bar/command-bar.component';
+import { CommandBarComponent } from './shared/components/command-bar/command-bar.component';
 import {MatButtonModule} from '@angular/material/button';
 import {RouterModule} from '@angular/router';
 
 
 @NgModule({
   declarations: [
-    // CommandBarComponent
+    CommandBarComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +15,7 @@ import {RouterModule} from '@angular/router';
     RouterModule
   ],
   exports: [
-    // CommandBarComponent
+    CommandBarComponent
   ]
 })
 export class SharedModule { }

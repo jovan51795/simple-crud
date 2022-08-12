@@ -14,7 +14,7 @@ export class BlogItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  cardAction = (actionType: string, id: any) => {
-    this.actionEmetter.emit({type: actionType, id})
+  cardAction = (id: any) => {
+    this.actionEmetter.emit(id)
   }
 }

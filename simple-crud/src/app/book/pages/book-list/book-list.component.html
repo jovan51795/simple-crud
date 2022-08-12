@@ -1,6 +1,6 @@
-<button (click)="sample()">sample</button>
+<app-command-bar (deleteAllEmitter)="deleteAll()"></app-command-bar>
 <section>
-    <mat-card *ngFor="let book of books" class="example-card">
+    <mat-card *ngFor="let book of books" class="example-card flex-1">
         <app-book-item [bookItem]="book" class="app-book" (actionEmetter)="action($event)"></app-book-item>
     </mat-card>
 </section>
