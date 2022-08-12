@@ -12,7 +12,9 @@ export class CommandBarComponent implements OnInit{
   @Output () deleteAllEmitter = new EventEmitter()
   constructor(private router: Router) { 
   }
-
+  deleteAll = () => {
+    this.deleteAllEmitter.emit();
+  }
 
   ngOnInit(): void {
    
@@ -23,7 +25,5 @@ export class CommandBarComponent implements OnInit{
     return s[1];
   }
 
-  deleteAll = () => {
-    this.deleteAllEmitter.emit();
-  }
+  
 }

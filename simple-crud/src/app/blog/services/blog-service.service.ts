@@ -39,12 +39,19 @@ export class BlogServiceService {
     this.blog.push(bookData)
   }
 
-  editBook = (blogData: Blog) => {
-   for(let x in this.blog) {
-    if(this.blog[x].id === blogData.id){
-      this.blog[x] = blogData
+  editBlog = (blogData: Blog) => {
+   for(let x of this.blog) {
+    if(x.id === blogData.id){
+      x.title = blogData.title
+      x.author = blogData.author
+      x.description = blogData.description
+      x.comments = blogData.comments
     }
    }
+
+   console.log(this.blog)
+   
+   
   }
 
   delete(id: number){

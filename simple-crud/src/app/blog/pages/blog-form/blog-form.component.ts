@@ -22,6 +22,7 @@ export class BlogFormComponent implements OnInit {
     }else {
       this.blogItems = this.blogService.getBlog().filter(x => x.id === parseInt(this.paramId))
     }
+
     this.blogFormGroup = this.fb.group({
       id: [this.blogItems[0].id],
       title: [this.blogItems[0].title],
@@ -47,7 +48,7 @@ export class BlogFormComponent implements OnInit {
     if(this.paramId === 'false'){
       return this.blogService.setBook(blogData)
     }
-    return this.blogService.editBook(blogData)
+    return this.blogService.editBlog(blogData)
   }
 
   deleteComment = (i: number) => {
