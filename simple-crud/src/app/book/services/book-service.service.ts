@@ -62,9 +62,11 @@ export class BookServiceService {
   }
 
   editBook = (bookData: Book) => {
-   for(let x in this.book) {
-    if(this.book[x].id === bookData.id){
-      this.book[x] = bookData
+   for(let x of this.book) {
+    if(x.id === bookData.id){
+      x.name = bookData.name
+      x.isbn = bookData.isbn
+      x.authors = bookData.authors
     }
    }
   }
