@@ -9,6 +9,12 @@ import { MatCardModule} from '@angular/material/card'
 import { HeaderComponent } from './shared/components/header/header.component';
 import { MatIconModule} from '@angular/material/icon';
 import { MatToolbarModule} from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './auth-components/register/register.component';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './auth-components/login/login.component';
+import { LayoutComponent } from './shared/layout/layout.component';
+
 // import { CommandBarComponent } from './shared/components/command-bar/command-bar.component';
 
 // import {MatButtonModule} from '@angular/material/button';
@@ -18,6 +24,9 @@ import { MatToolbarModule} from '@angular/material/toolbar';
   declarations: [
     AppComponent,
     HeaderComponent,
+    RegisterComponent,
+    LoginComponent,
+    LayoutComponent
     // CommandBarComponent,
   ],
   imports: [
@@ -28,9 +37,12 @@ import { MatToolbarModule} from '@angular/material/toolbar';
     MatFormFieldModule,
     MatToolbarModule,
     MatIconModule,
+    ReactiveFormsModule,
     // MatButtonModule
+    
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

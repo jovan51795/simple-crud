@@ -2,9 +2,10 @@
     <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button> -->
-    <span>SIMPLE CRUD</span>
+    <span>SIMPLE CRUD {{header}}</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon btn btn-default" aria-label="Example icon-button with share icon"
+    <ng-container>
+        <button mat-icon-button class="example-icon btn btn-default" aria-label="Example icon-button with share icon"
         [routerLink]="['/profile']" >
         <!-- <mat-icon>share</mat-icon> -->
         Profile
@@ -19,5 +20,11 @@
         <!-- <mat-icon>share</mat-icon> -->
         Book
     </button>
+    <button mat-icon-button class="example-icon btn btn-default" aria-label="Example icon-button with share icon"
+        routerLink="login">
+        <!-- <mat-icon>share</mat-icon> -->
+        Logout
+    </button>
+    </ng-container>
 
 </mat-toolbar>

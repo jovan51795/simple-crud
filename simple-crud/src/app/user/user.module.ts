@@ -5,20 +5,24 @@ import { UserRoutingModule } from './user-routing.module';
 import { ProfileComponent } from './pages/profile/profile.component';
 import {FormComponent} from './components/form/form.component'
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    FormComponent
+    FormComponent,
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     MatFormFieldModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+  ],
+
+  providers: [
+    FormBuilder,
   ]
 })
 export class UserModule { }

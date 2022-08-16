@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { forkJoin, map, Subscription } from 'rxjs';
 import { Blog } from '../../models/blog';
 import { BlogServiceService } from '../../services/blog-service.service';
 
@@ -7,22 +8,31 @@ import { BlogServiceService } from '../../services/blog-service.service';
   templateUrl: './blog-list.component.html',
   styleUrls: ['./blog-list.component.scss']
 })
-export class BlogListComponent implements OnInit {
-
+export class BlogListComponent implements OnInit, OnDestroy {
   blogs: Blog[] = []
+  sub: Subscription | undefined
   constructor( private blogService: BlogServiceService) { 
-    this.blogs = blogService.getBlog();
+    this.sub = blogService.getBlog().subscribe(d => {
+      this.blogs = d
+    });
   }
 
   ngOnInit(): void {
   }
   action(id: number){
-    this.blogService.delete(id)
-    this.blogs = this.blogService.getBlog();
+    this.sub = forkJoin([this.blogService.delete(id), this.blogService.getBlog()]).pipe(
+    map(([first , second]) => {
+      this.blogs = second
+    })).subscribe()
   }
 
   deleteAllBlog = () => {
-    this.blogService.deleteAll()
-    this.blogs = this.blogService.getBlog();
+    for(let x of this.blogs) {
+      this.action(x.id)
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.sub?.unsubscribe()
   }
 }
