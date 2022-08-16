@@ -16,10 +16,10 @@ export class BookItemComponent implements OnInit {
   }
 
   cardAction = (id: any) => {
-    this.actionEmetter.emit( id)
+    this.actionEmetter.emit(id)
   }
 
-  editBook = (id: number) => {
-    console.log(id)
-  }
+  // editBook = (id: number) => {
+  //   console.log(id)
+  // }
 }

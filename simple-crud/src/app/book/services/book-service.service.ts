@@ -1,12 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Book } from '../models/book';
+import { forkJoin, map, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookServiceService {
   
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   book: Book[] = [
     {
@@ -54,29 +57,64 @@ export class BookServiceService {
    
   ];
 
-  getBooks = () => {
-    return this.book;
+  getBooks(): Observable<Book[]> {
+    return this.http.get<Book[]>(`${environment.apiUrl}/books`).pipe(
+      tap((x: Book[])=> {
+        return x
+      })
+    );
   }
-  setBook = (bookData: Book) => {
-    this.book.push(bookData)
+
+  setBook = (b: Book) => {
+    return this.http.post(`${environment.apiUrl}/books`, b).pipe(
+      tap(a => a)
+    )
   }
 
   editBook = (bookData: Book) => {
-   for(let x of this.book) {
-    if(x.id === bookData.id){
-      x.name = bookData.name
-      x.isbn = bookData.isbn
-      x.authors = bookData.authors
-    }
-   }
+    return this.http.put(`${environment.apiUrl}/books/${bookData.id}`, bookData).pipe(
+      tap( a => a)
+    )
   }
 
-  delete(id: number){
-    this.book = this.book.filter((x)=> x.id !== id)
+  getEditBook = (id: number) => {
+    return this.getBooks().pipe(
+      map((x: Book[]) => {
+        return x.filter( i => i.id === id)
+      })
+    )
   }
-  deleteAll = () => {
-    this.book = [];
+  delete (id: number) {
+    return this.http.delete(`${environment.apiUrl}/books/${id}`).pipe(
+      tap(a => a)
+    )
   }
+
+  // getBooks = () => {
+  //   return this.book;
+  // }
+  // setBook = (bookData: Book) => {
+  //   this.book.push(bookData)
+  // }
+
+  // editBook = (bookData: Book) => {
+  //  for(let x of this.book) {
+  //   if(x.id === bookData.id){
+  //     x.name = bookData.name
+  //     x.isbn = bookData.isbn
+  //     x.authors = bookData.authors
+  //   }
+  //  }
+  // }
+
+  // delete(id: number){
+  //   this.book = this.book.filter((x)=> x.id !== id)
+  // // }
+  // deleteAll (bookData: Book[]){
+  //   for(let x of bookData) {
+  //     this.delete(x.id).subscribe()
+  //   }
+  // }
 
     
     

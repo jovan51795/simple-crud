@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Blog } from '../models/blog';
 
 @Injectable({
@@ -6,7 +9,7 @@ import { Blog } from '../models/blog';
 })
 export class BlogServiceService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   blog: Blog[] = [
     {
@@ -31,32 +34,66 @@ export class BlogServiceService {
     }
   ]
 
-  getBlog = () => {
-    return this.blog;
+  getBlog(): Observable<Blog[]> {
+    return this.http.get<Blog[]>(`${environment.apiUrl}/blog`).pipe(
+      tap((b: Blog[]) => {
+        return b
+      })
+    )
   }
 
-  setBook = (bookData: Blog) => {
-    this.blog.push(bookData)
+  setBlog = (b: Blog) => {
+    return this.http.post(`${environment.apiUrl}/blog`, b).pipe(
+      tap( b => b)
+    )
   }
-
   editBlog = (blogData: Blog) => {
-   for(let x of this.blog) {
-    if(x.id === blogData.id){
-      x.title = blogData.title
-      x.author = blogData.author
-      x.description = blogData.description
-      x.comments = blogData.comments
-    }
-   }
-
-   console.log(this.blog)
-   
-   
+    return this.http.put(`${environment.apiUrl}/blog/${blogData.id}`, blogData).pipe(
+      tap(x => x)
+    )
+  }
+  getEditBlog = (id: number) => {
+    return this.getBlog().pipe(
+      map((x: Blog[]) => {
+        return x.filter( i => i.id === id)
+        
+      })
+    )
   }
 
-  delete(id: number){
-    this.blog = this.blog.filter((x)=> x.id !== id)
+  delete =(id: number) => {
+    return this.http.delete(`${environment.apiUrl}/blog/${id}`).pipe(
+      tap(x => x)
+    )
   }
+
+
+  // getBlog = () => {
+  //   return this.blog;
+  // }
+
+  // setBook = (bookData: Blog) => {
+  //   this.blog.push(bookData)
+  // }
+
+  // editBlog = (blogData: Blog) => {
+  //  for(let x of this.blog) {
+  //   if(x.id === blogData.id){
+  //     x.title = blogData.title
+  //     x.author = blogData.author
+  //     x.description = blogData.description
+  //     x.comments = blogData.comments
+  //   }
+  //  }
+
+  //  console.log(this.blog)
+   
+   
+  // }
+
+  // delete(id: number){
+  //   this.blog = this.blog.filter((x)=> x.id !== id)
+  // }
   deleteAll = () => {
     this.blog = [];
     console.log(this.blog)
