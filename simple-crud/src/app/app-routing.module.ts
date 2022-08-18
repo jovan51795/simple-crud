@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth-components/login/login.component';
+import { NotfoundComponent } from './auth-components/notfound/notfound.component';
 import { RegisterComponent } from './auth-components/register/register.component';
 import { BookFormComponent } from './book/pages/book-form/book-form.component';
 import { AuthGuard } from './core/guards/auth.guard';
@@ -40,6 +41,14 @@ const routes: Routes = [
         
       },
     ]
+  },
+  {
+    path: "404",
+    component: NotfoundComponent
+  },
+  {
+    path: "**",
+    redirectTo: "404"
   }
   // {
   //   path: "book",
