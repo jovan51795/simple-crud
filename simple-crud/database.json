@@ -1,33 +1,21 @@
 {
-  "blog": [
-    {
-      "id": 1,
-      "title": "The World War 3",
-      "description": "is happening now",
-      "author": "by putin",
-      "comments": [
-        "iscp"
-      ]
-    },
-    {
-      "id": 2,
-      "title": "The Coding Convention",
-      "description": "Angular",
-      "author": "Jovanie",
-      "comments": [
-        "developers",
-        "programmer"
-      ]
-    }
-  ],
+  "blog": [],
   "books": [
     {
       "id": 1,
-      "name": "Java Tutorials",
+      "name": "dfgdfsg",
       "authors": [
-        "lawrence"
+        "fdgdsfg"
       ],
-      "isbn": "123"
+      "isbn": "gdfsgdsf"
+    },
+    {
+      "id": 2,
+      "name": "dfgdfsg",
+      "authors": [
+        "fdgdsfg"
+      ],
+      "isbn": "gdfsgdsf"
     }
   ],
   "users": [
@@ -42,6 +30,12 @@
       "password": "$2a$10$4xGzgV0rr6/UZhe8.bHDneJsHRkcnjsBWnMf1sSBuY8dwZgoiK57C",
       "name": "jovanie",
       "id": 2
+    },
+    {
+      "email": "jovan@gmail.com",
+      "password": "$2a$10$bmpBZVskG.tBSHAezPtXPuyjsLYPq6sOatYhxihY.ngydnUwEk9QK",
+      "name": "jovan",
+      "id": 3
     }
   ]
 }

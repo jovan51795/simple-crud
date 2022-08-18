@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { forkJoin, map, Subscription } from 'rxjs';
+import { forkJoin, interval, map, Subscription } from 'rxjs';
 import { Book } from '../../models/book';
 import {BookServiceService} from '../../services/book-service.service'
 
@@ -14,7 +14,7 @@ import {BookServiceService} from '../../services/book-service.service'
 export class BookListComponent implements OnInit, OnDestroy {
   sub: Subscription | undefined
   books: Book[] = [];
-  constructor(private bookService: BookServiceService, private router: Router) { 
+  constructor(private bookService: BookServiceService) { 
     this.sub = this.bookService.getBooks().subscribe(x => {
       this.books = x
     });
@@ -26,11 +26,12 @@ export class BookListComponent implements OnInit, OnDestroy {
   action(id: number){
     forkJoin([this.bookService.delete(id), this.bookService.getBooks()]).pipe(
       map(([f , s]) => {
+        console.log(f, "all books")
         this.books = s
       })).subscribe()
   }
  
-  deleteAll = () => {
+  deleteAllBook = () => {
     for(let x of this.books) {
       this.action(x.id)
     }

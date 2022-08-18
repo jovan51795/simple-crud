@@ -45,23 +45,13 @@ export class BookServiceService {
       ],
       isbn: 1234567810
     },
-    // {
-    //   id: 4,
-    //   name: "React tutorials",
-    //   authors: [
-    //     "jovanie",
-    //     "cabatuan"
-    //   ],
-    //   isbn: 1234567810
-    // },
+    
    
   ];
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${environment.apiUrl}/books`).pipe(
-      tap((x: Book[])=> {
-        return x
-      })
+      tap(x => x)
     );
   }
 

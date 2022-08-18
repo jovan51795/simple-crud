@@ -14,6 +14,8 @@ import { RegisterComponent } from './auth-components/register/register.component
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth-components/login/login.component';
 import { LayoutComponent } from './shared/layout/layout.component';
+import { NotfoundComponent } from './auth-components/notfound/notfound.component';
+import { ToastrModule } from 'ngx-toastr';
 
 // import { CommandBarComponent } from './shared/components/command-bar/command-bar.component';
 
@@ -26,7 +28,8 @@ import { LayoutComponent } from './shared/layout/layout.component';
     HeaderComponent,
     RegisterComponent,
     LoginComponent,
-    LayoutComponent
+    LayoutComponent,
+    NotfoundComponent
     // CommandBarComponent,
   ],
   imports: [
@@ -38,6 +41,7 @@ import { LayoutComponent } from './shared/layout/layout.component';
     MatToolbarModule,
     MatIconModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
     // MatButtonModule
     
     HttpClientModule,

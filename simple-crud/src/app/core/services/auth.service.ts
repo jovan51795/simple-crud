@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { catchError, Observable, of, tap } from 'rxjs';
 import { UserAuth } from 'src/app/auth-components/model/auth-model';
 import { User } from 'src/app/user/models/user';
 import { environment } from 'src/environments/environment';
@@ -10,32 +11,36 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-
-  private token: string = ''
-
-  constructor(private http: HttpClient, private router: Router ) { }
+  constructor(private http: HttpClient, private router: Router, private toast: ToastrService ) { }
 
   register = (userData: UserAuth) => {
     return this.http.post(`${environment.apiUrl}/register`, userData).pipe(
+      catchError(err => {
+        this.toast.error(err.error)
+        return of(err)
+      }),
       tap((x: any) => {
         if(x.accessToken) {
-          this.token = x.accessToken
           this.router.navigate(['login'])
         }
       })
     )
   }
 
-  login = (userData: UserAuth) => {
-    return this.http.post(`${environment.apiUrl}/login`, userData).pipe(
-      tap((x: any) => {
-        this.token = x.accessToken;
-        this.router.navigate(['profile'])
-      })
+  login = (userData: any) => {
+    return this.http.post(`${environment.apiUrl}/login`, userData)
+    .pipe(
+      catchError(err => {
+        this.toast.error(err.error)
+        return of(err)
+      }),
+      tap(x => x)
+
     )
   }
 
   getToken(){
-    return this.token ? true : false
+    return localStorage.getItem("token")? true: false;
   }
+
 }

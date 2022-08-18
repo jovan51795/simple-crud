@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -9,12 +10,17 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class HeaderComponent implements OnInit, AfterViewInit {
 
   header = false
-  constructor(private autheService: AuthService) { }
+  constructor(private autheService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
-      this.header = this.autheService.getToken()
+      
+  }
+
+  logout = () => {
+    localStorage.removeItem("token");
+    this.router.navigate(['login'])
   }
 }
