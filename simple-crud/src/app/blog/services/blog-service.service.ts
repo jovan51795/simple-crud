@@ -35,7 +35,7 @@ export class BlogServiceService {
   ]
 
   getBlog(): Observable<Blog[]> {
-    return this.http.get<Blog[]>(`${environment.apiUrl}/blog`).pipe(
+    return this.http.get<Blog[]>(`${environment.url}/blog`).pipe(
       tap((b: Blog[]) => {
         return b
       })
@@ -43,12 +43,12 @@ export class BlogServiceService {
   }
 
   setBlog = (b: Blog) => {
-    return this.http.post(`${environment.apiUrl}/blog`, b).pipe(
+    return this.http.post(`${environment.url}/blog`, b).pipe(
       tap( b => b)
     )
   }
   editBlog = (blogData: Blog) => {
-    return this.http.put(`${environment.apiUrl}/blog/${blogData.id}`, blogData).pipe(
+    return this.http.put(`${environment.url}/blog/${blogData.id}`, blogData).pipe(
       tap(x => x)
     )
   }
@@ -62,7 +62,7 @@ export class BlogServiceService {
   }
 
   delete =(id: number) => {
-    return this.http.delete(`${environment.apiUrl}/blog/${id}`).pipe(
+    return this.http.delete(`${environment.url}/blog/${id}`).pipe(
       tap(x => x)
     )
   }

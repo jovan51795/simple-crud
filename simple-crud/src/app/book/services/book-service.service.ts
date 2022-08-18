@@ -50,19 +50,19 @@ export class BookServiceService {
   ];
 
   getBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${environment.apiUrl}/books`).pipe(
+    return this.http.get<Book[]>(`${environment.url}/books`).pipe(
       tap(x => x)
     );
   }
 
   setBook = (b: Book) => {
-    return this.http.post(`${environment.apiUrl}/books`, b).pipe(
+    return this.http.post(`${environment.url}/books`, b).pipe(
       tap(a => a)
     )
   }
 
   editBook = (bookData: Book) => {
-    return this.http.put(`${environment.apiUrl}/books/${bookData.id}`, bookData).pipe(
+    return this.http.put(`${environment.url}/books/${bookData.id}`, bookData).pipe(
       tap( a => a)
     )
   }
@@ -75,7 +75,7 @@ export class BookServiceService {
     )
   }
   delete (id: number) {
-    return this.http.delete(`${environment.apiUrl}/books/${id}`).pipe(
+    return this.http.delete(`${environment.url}/books/${id}`).pipe(
       tap(a => a)
     )
   }

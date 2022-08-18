@@ -14,7 +14,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router, private toast: ToastrService ) { }
 
   register = (userData: UserAuth) => {
-    return this.http.post(`${environment.apiUrl}/register`, userData).pipe(
+    return this.http.post(`${environment.url}/register`, userData).pipe(
       catchError(err => {
         this.toast.error(err.error)
         return of(err)
@@ -28,9 +28,10 @@ export class AuthService {
   }
 
   login = (userData: any) => {
-    return this.http.post(`${environment.apiUrl}/login`, userData)
+    return this.http.post(`${environment.url}/login`, userData)
     .pipe(
       catchError(err => {
+        console.log(err)
         this.toast.error(err.error)
         return of(err)
       }),
